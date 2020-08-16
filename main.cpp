@@ -11,7 +11,7 @@ int main() {
     int n,q;
     cin >> n >> q;
     
-    vector< vector<int> > arr;
+    vector<vector<int>> arr;
     
     for (int i = 0; i < n ; ++i ) {
 
@@ -32,9 +32,8 @@ int main() {
         arr.push_back(c);
 
     }
-
     
-    vector< array<int,2> > qs;
+    vector<array<int,2>> qs;
 
     for (int i = 0; i < q ; ++i){
 
