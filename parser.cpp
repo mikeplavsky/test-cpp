@@ -7,11 +7,15 @@
 using namespace std;
 
 struct Tag {
+    string name;
     map<string, Tag> tags;
     map<string,string> attrs;
 };
 
-void parse_tag() {
+std::pair<Tag,bool> parse_tag() {
+
+    Tag tag;
+    bool closed = false;
 
     for (;;){
 
@@ -23,12 +27,11 @@ void parse_tag() {
 
         if (*b == '<'){
 
-            string tag = t.substr(1);
-            cout << tag << std::endl;
+            tag.name = t.substr(1);
 
             if (*next(b) == '/') {
-                string tag = t.substr(2,t.length()-3);
-                cout << tag << std::endl;
+                tag.name = t.substr(2,t.length()-3);
+                closed = true;
             }
 
         }
@@ -38,6 +41,8 @@ void parse_tag() {
         } 
     }
 
+    return make_pair(tag,closed);
+
 }
 
 int main() {
@@ -46,7 +51,8 @@ int main() {
     cin >> n >> q; 
 
     for (int i = 0; i < n ; ++i) {
-        parse_tag();
+        auto res = parse_tag();
+        cout << res.first.name << ' ' << res.second << std::endl;
     }
 
     for (int i = 0; i < q; ++i) {
