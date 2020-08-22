@@ -13,12 +13,27 @@ struct Tag {
 
 void parse_tag() {
 
-    string t;
-
     for (;;){
+
+        string t;
         cin >> t;
-        cout << t << std::endl;
-        if (*t.rbegin() == '>') {
+
+        auto b = t.begin();
+        auto e = t.rbegin();
+
+        if (*b == '<'){
+
+            string tag = t.substr(1);
+            cout << tag << std::endl;
+
+            if (*next(b) == '/') {
+                string tag = t.substr(2,t.length()-3);
+                cout << tag << std::endl;
+            }
+
+        }
+
+        if (*e == '>') {
             break;
         } 
     }
