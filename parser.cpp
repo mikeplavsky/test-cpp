@@ -124,8 +124,17 @@ int main() {
     }
 
     for (int i = 0; i < q; ++i) {
-        string query;
-        cin >> query;
+
+        string q;
+        cin >> q;
+
+        istringstream in(q);
+        string t;
+
+        while (getline(in,t,'.')) {
+            cout << t << std::endl;
+        }
+
     }
 
 }
