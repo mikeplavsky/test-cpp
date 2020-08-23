@@ -67,25 +67,35 @@ int main() {
     long n, q;
     cin >> n >> q; 
 
-    shared_ptr<Tag> curr; 
+    shared_ptr<Tag> parent; 
+    map<string, shared_ptr<Tag>> tags;
 
     for (int i = 0; i < n ; ++i) {
 
         auto res = parse_tag();
 
-        if (curr) {
-            res.first -> parent = curr; 
+        auto opened = not res.second;
+        auto tag = res.first;
+
+        if (opened) {
+
+            tag -> parent = parent; 
+            parent = tag;
+
+            tags[tag -> name] = tag;
+
         } 
         else {
-            curr = res.first; 
-        }
+            parent = tags[tag -> name] -> parent;
+        } 
 
-        cout << res.first -> name 
-            << ' ' 
-            << res.second 
-            <<  ' ' 
-            << curr -> name 
-            << std::endl;
+    }
+
+    for (auto [a,b]: tags) {
+        cout 
+            << a
+            << ' ' << (b -> parent? b -> parent  -> name: "")
+            << "\n";
     }
 
     for (int i = 0; i < q; ++i) {
