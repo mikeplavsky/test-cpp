@@ -11,7 +11,7 @@ struct Tag {
     string name;
     shared_ptr<Tag> parent;
 
-    map<string, Tag> tags;
+    map<string, shared_ptr<Tag>> tags;
     map<string,string> attrs;
 };
 
@@ -81,36 +81,9 @@ auto parse_tag() {
 
 }
 
-int main() {
+template<class T> void print(T *root) {
 
-    long n, q;
-    cin >> n >> q; 
-
-    shared_ptr<Tag> parent; 
-    map<string, shared_ptr<Tag>> tags;
-
-    for (int i = 0; i < n ; ++i) {
-
-        auto res = parse_tag();
-
-        auto opened = not res.second;
-        auto tag = res.first;
-
-        if (opened) {
-
-            tag -> parent = parent; 
-            parent = tag;
-
-            tags[tag -> name] = tag;
-
-        } 
-        else {
-            parent = tags[tag -> name] -> parent;
-        } 
-
-    }
-
-    for (auto [a,b]: tags) {
+    for (auto [a,b]: root -> tags) {
 
         cout 
             << a
@@ -123,6 +96,39 @@ int main() {
 
     }
 
+}
+
+int main() {
+
+    long n, q;
+    cin >> n >> q; 
+
+    shared_ptr<Tag> root(new Tag());
+    shared_ptr<Tag> parent = root;
+
+    parent -> name = "root";
+
+    for (int i = 0; i < n ; ++i) {
+
+        auto res = parse_tag();
+
+        auto opened = not res.second;
+        auto tag = res.first;
+
+        if (opened) {
+
+            tag -> parent = parent; 
+            parent -> tags[ tag -> name ] = tag;
+
+            parent = tag;
+
+        } 
+        else {
+            parent = parent -> parent;
+        } 
+
+    }
+
     for (int i = 0; i < q; ++i) {
 
         string q;
@@ -132,7 +138,7 @@ int main() {
         string t;
 
         while (getline(in,t,'.')) {
-            cout << t << std::endl;
+            //cout << t << std::endl;
         }
 
     }

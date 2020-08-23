@@ -1,11 +1,15 @@
 8 3
 <tag1 value = "HelloWorld">
-<tag2 name = "Name1">
-<tag3 name = "Name1" next = "friday">
-</tag3>
-</tag2>
-<tag4 name = "Name1" next = "friday">
-</tag4>
+    <tag2 name = "Name1">
+        <tag3 name = "Name1" next = "friday">
+        </tag3>
+        <tag7 name = "Name1" next = "friday">
+        </tag7>
+    </tag2>
+    <tag4 name = "Name1" next = "friday">
+    </tag4>
+    <tag5 age = "12">
+    </tag5>
 </tag1>
 tag1.tag2~name
 tag1~name
