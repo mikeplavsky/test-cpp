@@ -117,6 +117,10 @@ int main() {
             << ' ' << (b -> parent? b -> parent  -> name: "")
             << "\n";
 
+        for (auto [attr,val]: b -> attrs){
+            cout << attr << ":" << val << std::endl;
+        }
+
     }
 
     for (int i = 0; i < q; ++i) {
