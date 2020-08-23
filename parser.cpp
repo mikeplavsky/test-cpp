@@ -137,8 +137,30 @@ int main() {
         istringstream in(q);
         string t;
 
+        auto curr = root.get();
+
         while (getline(in,t,'.')) {
-            //cout << t << std::endl;
+
+            auto pos = t.find('~');
+
+            if (pos == t.npos) {
+                curr = curr -> tags[t].get();
+            }
+            else {
+
+                auto tag = t.substr(0,pos);
+                auto a = t.substr(pos + 1);
+
+                auto res = curr -> tags[tag] -> attrs[a];
+
+                if (res.empty()) {
+                    std::cout << "Not Found!" << std::endl;
+                    continue;
+                } 
+
+                std::cout << res << std::endl;
+            }
+            
         }
 
     }
