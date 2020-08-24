@@ -148,16 +148,18 @@ int main() {
             auto pos = t.find('~');
 
             if (pos == t.npos) {
+
                 curr = curr -> tags[t].get();
-            }
-            else {
 
                 if (not curr) {
 
                     std::cout << "Not Found!" << std::endl;
-                    continue;
+                    break;
 
                 } 
+
+            }
+            else {
 
                 auto tag = t.substr(0,pos);
                 auto a = t.substr(pos + 1);
@@ -167,7 +169,7 @@ int main() {
                 if (not next) {
 
                     std::cout << "Not Found!" << std::endl;
-                    continue;
+                    break;
 
                 } 
 
