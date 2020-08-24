@@ -153,14 +153,26 @@ int main() {
                 auto tag = t.substr(0,pos);
                 auto a = t.substr(pos + 1);
 
-                auto res = curr -> tags[tag] -> attrs[a];
+                auto next = curr -> tags[tag];
 
-                if (res.empty()) {
+                if (not next) {
+
                     std::cout << "Not Found!" << std::endl;
                     continue;
+
+                } 
+
+                auto res = next -> attrs[a];
+
+                if (res.empty()) {
+
+                    std::cout << "Not Found!" << std::endl;
+                    continue;
+
                 } 
 
                 std::cout << res << std::endl;
+
             }
             
         }
