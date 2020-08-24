@@ -1,4 +1,4 @@
-18 5
+18 6
 <tag1 value = "HelloWorld">
     <tag2 name = "Nexter">
         <tag3 name = "Super" next = "friday">
@@ -19,6 +19,7 @@
 </tag77>
 tag1.tag2.tag3~name
 tag1.tag2~name
-tag1~name
+tag1.tag2.tag7~name
 tag1~value
 tag77~value
+tag77.tag111~value

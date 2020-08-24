@@ -152,6 +152,13 @@ int main() {
             }
             else {
 
+                if (not curr) {
+
+                    std::cout << "Not Found!" << std::endl;
+                    continue;
+
+                } 
+
                 auto tag = t.substr(0,pos);
                 auto a = t.substr(pos + 1);
 
