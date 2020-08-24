@@ -164,18 +164,18 @@ int main() {
                 auto tag = t.substr(0,pos);
                 auto a = t.substr(pos + 1);
 
-                auto next = curr -> tags[tag];
+                auto next = curr -> tags.find(tag);
 
-                if (not next) {
+                if (next == curr -> tags.end()) {
 
                     std::cout << "Not Found!" << std::endl;
                     break;
 
                 } 
 
-                auto res = next -> attrs.find(a);
+                auto res = next -> second -> attrs.find(a);
 
-                if (res == next -> attrs.end()) {
+                if (res == next -> second -> attrs.end()) {
 
                     std::cout << "Not Found!" << std::endl;
                     continue;
@@ -185,9 +185,6 @@ int main() {
                 std::cout << res -> second << std::endl;
 
             }
-            
         }
-
     }
-
 }
