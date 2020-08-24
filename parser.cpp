@@ -4,6 +4,8 @@
 #include <iostream>
 #include <sstream>
 #include <algorithm>
+#include <memory>
+
 using namespace std;
 
 struct Tag {
