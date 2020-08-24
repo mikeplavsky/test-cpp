@@ -173,16 +173,16 @@ int main() {
 
                 } 
 
-                auto res = next -> attrs[a];
+                auto res = next -> attrs.find(a);
 
-                if (res.empty()) {
+                if (res == next -> attrs.end()) {
 
                     std::cout << "Not Found!" << std::endl;
                     continue;
 
                 } 
 
-                std::cout << res << std::endl;
+                std::cout << res -> second << std::endl;
 
             }
             
