@@ -178,7 +178,7 @@ int main() {
                 if (res == next -> second -> attrs.end()) {
 
                     std::cout << "Not Found!" << std::endl;
-                    continue;
+                    break;
 
                 } 
 
