@@ -67,13 +67,15 @@ auto parse_tag() {
     cin >> t;
 
     auto b = t.begin();
+    auto empty = *prev(t.end()) == '>';
+
     tag -> name = t.substr(1);
 
     if (*next(b) == '/') {
         tag -> name = t.substr(2,t.length()-3);
         closed = true;
     }
-    else {
+    else if (not empty) {
         tag -> attrs = parse_attrs();
     }
 
