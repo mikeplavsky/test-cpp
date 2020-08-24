@@ -149,14 +149,16 @@ int main() {
 
             if (pos == t.npos) {
 
-                curr = curr -> tags[t].get();
+                auto res = curr -> tags.find(t);
 
-                if (not curr) {
+                if (res == curr -> tags.end()) {
 
                     std::cout << "Not Found!" << std::endl;
                     break;
 
                 } 
+
+                curr = res -> second.get();
 
             }
             else {
