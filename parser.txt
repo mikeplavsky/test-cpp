@@ -1,7 +1,7 @@
-18 9
-<tag1 value = "HelloWorld">
-    <tag2 name = "Nexter">
-        <tag3 name = "Super" next = "friday">
+22 11
+<tag1 new_val = "New">
+    <tag2 name_test = "Nexter">
+        <tag3 name_one = "Super" next = "friday">
         </tag3>
         <tag7 name = "Name1" next = "friday">
         </tag7>
@@ -17,10 +17,16 @@
 </tag15>
 <tag77>
 </tag77>
-tag1.tag2.tag3~name
-tag1.tag2~name
+<tag90 val = "New 1">
+    <tag71 new_val = "New">
+    </tag71>
+</tag90>
+tag90~val
+tag90.tag71~new_value
+tag1.tag2.tag3~name_one
+tag1.tag2~name_test
 tag1.tag2.tag7~name
-tag1~value
+tag1~new_val
 tag77~value
 tag77.tag111~value
 tag79~value

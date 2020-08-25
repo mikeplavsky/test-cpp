@@ -1,0 +1,6 @@
+4 1
+<tag9>
+    <tag7 new_val = "New">
+    </tag7>
+</tag9>
+tag9.tag7~new_val

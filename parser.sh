@@ -3,4 +3,4 @@ g++ -std=c++17 \
     -Wall \
     -pedantic \
     -pthread parser.cpp && \
-    cat parser.txt | ./a.out
+    cat parser1.txt | ./a.out

@@ -73,6 +73,10 @@ auto parse_tag() {
 
     tag -> name = t.substr(1);
 
+    if (empty) {
+        tag -> name = t.substr(1,t.length()-2);
+    }
+
     if (*next(b) == '/') {
         tag -> name = t.substr(2,t.length()-3);
         closed = true;
