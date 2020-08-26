@@ -10,6 +10,12 @@ using namespace std;
 
 struct Tag {
 
+    Tag () {}
+
+    Tag(string  n){
+        name = n; 
+    }
+
     string name;
     shared_ptr<Tag> parent;
 
@@ -111,10 +117,8 @@ int main() {
     long n, q;
     cin >> n >> q; 
 
-    shared_ptr<Tag> root(new Tag());
-    shared_ptr<Tag> parent = root;
-
-    parent -> name = "root";
+    shared_ptr<Tag> root(new Tag("root"));
+    auto parent = root;
 
     for (int i = 0; i < n ; ++i) {
 
@@ -145,7 +149,7 @@ int main() {
         istringstream in(q);
         string t;
 
-        auto curr = root.get();
+        auto curr = *root;
 
         while (getline(in,t,'.')) {
 
@@ -153,16 +157,16 @@ int main() {
 
             if (pos == t.npos) {
 
-                auto res = curr -> tags.find(t);
+                auto res = curr.tags.find(t);
 
-                if (res == curr -> tags.end()) {
+                if (res == curr.tags.end()) {
 
                     std::cout << "Not Found!" << std::endl;
                     break;
 
                 } 
 
-                curr = res -> second.get();
+                curr = *res -> second;
 
             }
             else {
@@ -170,9 +174,9 @@ int main() {
                 auto tag = t.substr(0,pos);
                 auto a = t.substr(pos + 1);
 
-                auto next = curr -> tags.find(tag);
+                auto next = curr.tags.find(tag);
 
-                if (next == curr -> tags.end()) {
+                if (next == curr.tags.end()) {
 
                     std::cout << "Not Found!" << std::endl;
                     break;
