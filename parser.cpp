@@ -11,10 +11,7 @@ using namespace std;
 struct Tag {
 
     Tag () {}
-
-    Tag(string  n){
-        name = n; 
-    }
+    Tag(string  n): name(n){} 
 
     string name;
     shared_ptr<Tag> parent;
@@ -23,7 +20,7 @@ struct Tag {
     map<string,string> attrs;
 };
 
-map<string,string> parse_attrs(){
+auto parse_attrs(){
 
     map<string,string> res;
 
@@ -39,7 +36,7 @@ map<string,string> parse_attrs(){
 
         if (not attr) {
 
-            string v = l.substr(1,l.length() - 2);
+            auto v = l.substr(1,l.length() - 2);
 
             if (v.back() == '\"') {
                 v = v.substr(0,v.length() - 1);
@@ -69,7 +66,7 @@ map<string,string> parse_attrs(){
 auto parse_tag() {
 
     shared_ptr<Tag> tag(new Tag());
-    bool closed = false;
+    auto closed = false;
 
     string t;
     cin >> t;
@@ -97,7 +94,7 @@ auto parse_tag() {
 
 template<class T> void print(T *root) {
 
-    for (auto [a,b]: root -> tags) {
+    for (auto &[a,b]: root -> tags) {
 
         cout 
             << a
