@@ -114,7 +114,7 @@ int main() {
     long n, q;
     cin >> n >> q; 
 
-    shared_ptr<Tag> root(new Tag("root"));
+    auto root = make_shared<Tag>("root");
     auto parent = root;
 
     for (int i = 0; i < n ; ++i) {
