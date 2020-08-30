@@ -65,7 +65,7 @@ auto parse_attrs(){
 
 auto parse_tag() {
 
-    shared_ptr<Tag> tag(new Tag());
+    auto tag = make_shared<Tag>();
     auto closed = false;
 
     string t;
